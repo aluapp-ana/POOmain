@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class Deck {
     private Carta[] cartas;
     private int tamanho;
@@ -23,7 +21,7 @@ public class Deck {
         this.qtdade++;
     }
 
-    public void insereEncima(Carta carta){//"eh o zero"
+    public void insereEncima(Carta carta){
         if (this.qtdade == tamanho){
             throw new IndexOutOfBoundsException("Deck cheio!");
         }
@@ -38,7 +36,7 @@ public class Deck {
         if (this.qtdade == 0){
             throw new IndexOutOfBoundsException("Deck vazio!");
         }
-        Carta aux = this.cartas[this.qtdade-1];// para segurar o endereço/referencia e não perder o objeto
+        Carta aux = this.cartas[this.qtdade-1];
         this.qtdade--;
         return aux;
     }
@@ -59,7 +57,7 @@ public class Deck {
         if (this.qtdade == 0){
             throw new IndexOutOfBoundsException("Deck vazio!");
         }
-        return this.cartas[0];
+        return this.cartas[this.qtdade-1];
     }
 
     public Carta olha(int i){
@@ -101,18 +99,30 @@ public class Deck {
         this.qtdade++;
     }
 
-    //String = imutavel
-    //String x = "ola"
-    //String x = new String ("ola")
-    //x = x + "mamao" imp
-    //String xaux = new String(-----)
+    public void trocaPos(int p1,int p2){
+        if (this.qtdade == 0 ){
+            throw new IndexOutOfBoundsException("Deck vazio!");
+        }
+        if (p1<0 || p1>this.qtdade){
+            throw new IndexOutOfBoundsException("posicao inválida!");
+        }
+        if (p2<0 || p2>this.qtdade){
+            throw new IndexOutOfBoundsException("posicao inválida!");
+        }
+
+        Carta aux = cartas[p1];
+        cartas[p1] = cartas[p2];
+        cartas[p2] = aux;
+    }
+
     @Override
     public String toString() {
-        StringBuffer s = new StringBuffer(); 
-        s.append("Deck:\n");
+        StringBuffer s = new StringBuffer();
         for(int i=0;i<this.qtdade;i++){
-            s.append(this.cartas[i].toString()+"\n");
+            s.append("["+(i+1)+"] "+this.cartas[i].toString()+"\n");
         }
         return s.toString();
     }
+
+    
 }
