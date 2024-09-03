@@ -1,4 +1,4 @@
-public class Main {
+public class App {
     public static void main(String[] args) {
         Turma turma = new Turma(5);
 

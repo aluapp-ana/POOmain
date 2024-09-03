@@ -8,7 +8,7 @@ public class Turma {
         this.quantidadeAlunos = 0;
     }
 
-    public void informarNota(int matricula, double nota) {
+    public void infoNota(int matricula, double nota) {
         Aluno aluno = recuperarAluno(matricula);
         if (aluno != null) {
             aluno.setNota(nota);
