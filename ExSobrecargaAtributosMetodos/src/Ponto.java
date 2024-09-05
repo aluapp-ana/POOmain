@@ -4,11 +4,12 @@ public class Ponto {
 · Um que recebe dois parâmetros, as coordenadas x e y;
 · Um que inicializa o ponto através das coordenadas de um outro ponto recebido como argumento.
 */
-    private int x = 0; 
-    private int y = 0;
+    private int x ; 
+    private int y ;
     
     public Ponto (){
-        int PCoordenadas = ;
+        this.x = 0;
+        this.y = 0;
     }
 
     public Ponto (int x , int y){
@@ -17,6 +18,7 @@ public class Ponto {
     }
 
     public Ponto (int p1){
+        
     
     }
 
