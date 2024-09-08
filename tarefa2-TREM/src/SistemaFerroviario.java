@@ -23,7 +23,7 @@ public class SistemaFerroviario {
         garagem.adicionarVagao(new Vagao(3, 90));
         garagem.adicionarVagao(new Vagao(4, 110));
         
-        System.out.println("Sistema inicializado com locomotivas e vagões.");
+        System.out.println("Bem Vindo ao Sistema De Composição de Trens!");
     }
 
     public void executar() {

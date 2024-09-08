@@ -6,6 +6,7 @@ public class Trem {
     private ArrayList<Vagao> vagoes = new ArrayList<>();
 
     public Trem(int id) {
+        if(id<0) {throw new IllegalArgumentException("Numero de identificação inválido: " +id);}
         this.id = id;
     }
 
