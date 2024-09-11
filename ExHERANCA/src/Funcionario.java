@@ -3,7 +3,7 @@ public class Funcionario{
     private String matricula;//pode conter letras pois é STRING
     private String nome;
     private double salarioBruto;
-
+//
     //poderia criar uma outra variavel para os funcionarios de risco EX" private String nomeDependente
     
     public Funcionario(String matricula, String nome, double salarioBruto){

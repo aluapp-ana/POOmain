@@ -27,4 +27,4 @@ public class TerminalConsulta {
         }
         s.close();
     }
-}
+}//
