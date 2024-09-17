@@ -1,12 +1,17 @@
 public class Pesquisador extends Professor{
+    private int cargaHorariaDepesquisa;
 
-    private int carga
-
-    public Pesquisador(String nomePesq, double SalarioBasePesq){
-        super(nome, salario, SalarioBasePesq)
-        this.nomeF = nomePesq;
-        this.SalarioBasePesq = ;
-        this.SalarioLiquidoPesq = ;
+    public Pesquisador(String nome, double salarioBase, int cargaHorariaSemanal, int cargaHorariaDepesquisa) {
+        super(nome, salarioBase, cargaHorariaSemanal);
+        this.cargaHorariaDepesquisa = cargaHorariaDepesquisa;
     }
 
+    public int getCargaHorariaDePesquisa() {
+        return cargaHorariaDepesquisa;
+    }
+
+    @Override
+    public int getCargaHorariaSemanal(){
+        return super.getCargaHorariaSemanal()+getCargaHorariaDePesquisa();
+    }
 }
