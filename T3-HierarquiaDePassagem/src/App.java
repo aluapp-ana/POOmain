@@ -7,7 +7,7 @@ public class App {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
         
-        // Definir o formato da data no padrão brasileiro
+        //formatei a data para o padrão brasileiro
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         LocalDate dataVoo = null;
         
@@ -30,11 +30,11 @@ public class App {
         
         System.out.print("Digite o custo base da passagem: ");
         double custoBase = entrada.nextDouble();
-        entrada.nextLine(); // Consumir a quebra de linha
+        entrada.nextLine(); 
         while (custoBase <= 0) {
             System.out.print("Digite o custo base da passagem (valor positivo): ");
             custoBase = entrada.nextDouble();
-            entrada.nextLine(); // Consumir a quebra de linha
+            entrada.nextLine(); 
         }
 
         int escolhaClasse = 0;
@@ -46,17 +46,17 @@ public class App {
             System.out.print("Classe escolhida: ");
             if (entrada.hasNextInt()) {
                 escolhaClasse = entrada.nextInt();
-                entrada.nextLine(); // Consumir a quebra de linha
+                entrada.nextLine(); 
                 if (escolhaClasse < 1 || escolhaClasse > 3) {
                     System.out.println("Opção inválida! Escolha entre 1 e 3.");
                 }
             } else {
                 System.out.println("Entrada inválida! Digite um número entre 1 e 3.");
-                entrada.nextLine(); // Consumir a entrada inválida
+                entrada.nextLine(); 
             }
         }
 
-        // Criar a passagem com base na escolha do usuário
+        
         Passagem passagem = null;
         switch (escolhaClasse) {
             case 1:
@@ -73,7 +73,7 @@ public class App {
                 System.exit(0);
         }
 
-        // Exibir detalhes da passagem
+        
         System.out.println("\nDetalhes da Passagem:");
         passagem.exibirDetalhes();
 
