@@ -25,7 +25,7 @@ public class ContaLimite extends ContaBancaria {
 
     @Override
     public double getSaldo(){
-        return super.getSaldo() - limite;//limite é um valor caso queira usar, mas n é o exatamente o saldo do usuario
+        return super.getSaldo() - limite;
     }
 
     @Override
