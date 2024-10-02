@@ -12,7 +12,7 @@ public class Tecnico extends Funcionario {
 
     @Override
     public double calculaSalarioLiquido(){
-        double sal = super.calculaSalarioLiquido();
+        double sal = getSalarioBase() - calculaInss();
         if (categoria >=3){
             sal *= 1.05;
         }
