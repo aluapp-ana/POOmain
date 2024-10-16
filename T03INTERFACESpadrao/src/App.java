@@ -41,6 +41,7 @@ public class App {
         Collections.sort(funcionarios);
         impFuncionarios(funcionarios);
 
+        
         System.out.println("");
         Collections.sort(funcionarios,new ComparadorFuncionarioT());
         impFuncionarios(funcionarios);
