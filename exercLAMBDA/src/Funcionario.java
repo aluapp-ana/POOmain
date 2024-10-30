@@ -13,6 +13,7 @@ public class Funcionario {
 		this.insalubridade = insalubridade;
 	}
 
+	
 	public int getMatricula() {
 		return matricula;
 	}
