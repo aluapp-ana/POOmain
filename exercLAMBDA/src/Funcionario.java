@@ -13,7 +13,6 @@ public class Funcionario {
 		this.insalubridade = insalubridade;
 	}
 
-	
 	public int getMatricula() {
 		return matricula;
 	}
@@ -61,10 +60,13 @@ public class Funcionario {
 	public double getSalarioBruto() {
 		double adicInsalubridade = 0.0;
 		double adicDep = 0.0;
+
 		if (getInsalubridade()) {
 			adicInsalubridade = getSalarioBase() * 0.1;
 		}
+
 		adicDep = getNroDependentes() * (getSalarioBase() * 0.01);
+
 		return (getSalarioBase() + adicInsalubridade + adicDep);
 	}
 
