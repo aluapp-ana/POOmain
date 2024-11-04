@@ -43,13 +43,13 @@ public class CadastroFuncionarios {
 	}
 
 	// 1b Retornar a quantidade de funcionários que tem dependentes.
-	public long quantidadeFuncionariosComDependentes(){
+	/*public long quantidadeFuncionariosComDependentes(){
 		return lstf
 			.stream()
 			.filter(null)
 
 	}
-
+*/
 	//1c
 	public double somatorioSalarioBruto(){
 		return 0;
