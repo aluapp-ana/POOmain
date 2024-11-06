@@ -1,0 +1,28 @@
+nos exercícios que seguem considere a classe “Estudante” detalhada na figura, bem como a existência de uma “List<Estudante> estudantes”.
+
+public class Estudante { private static int gerMatr = 0; private int matricula; private String nome; private Curso curso; private int idade; public Estudante(String nome, Curso curso, int idade) { this.matricula = ++gerMatr; this.nome = nome; this.curso = curso; this.idade = idade; } public int getMatricula() { return matricula; } public String getNome() { return nome; } public Curso getCurso() { return curso; } public int getIdade() { return idade; } public String toString() { ... } }
+
+
+1) Imprimir os nomes dos estudantes do curso de computação.
+
+2) Imprimir os nomes dos estudantes do curso de computação com mais de 20 anos em ordem alfabética
+
+3) Imprimir as matrículas e os nomes dos estudantes do curso de computação em ordem crescente de matrícula
+
+4) Imprimir as duas maiores idades dos alunos do curso de medicina.
+
+5) Imprimir a quantidade de alunos do curso de direito.
+
+6) Imprimir a média de idade dos alunos da computação.
+
+7) Imprimir o nome do primeiro aluno de computação com mais de 18 anos.
+
+8) Imprimir o nome de um aluno de computação com mais de 18 anos.
+
+9) Imprimir se existe algum aluno de medicina com mais de 25 anos.
+
+10) Imprimir se todos os alunos de direito têm mais de 17 anos.
+
+11) Criar um Map<Curso>,List<Estudante>> separando os estudantes por curso.
+
+12) A partir do “Map” criado na questão 11, criar uma lista com os nomes/curso dos dois estudantes mais moços de cada curso em ordem alfabética.
