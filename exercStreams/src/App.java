@@ -3,10 +3,8 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Random;
 import java.util.Set;
-import java.util.function.LongUnaryOperator;
 import java.util.stream.Collectors;
 
 public class App {
@@ -81,18 +79,18 @@ public class App {
 
         // Duas maiores idades do curso de medicina
         List<Integer> m = estudantes.stream()
-        .filter(e -> e.getCurso() == Curso.MEDICINA)
-        .map(e -> e.getIdade())
-        .sorted((i1,i2) -> i2- i1)
-        .distinct()//separa os difetentes
-        //se fosse idade maxima do curso, era so usar .max
-        .limit(2) //devolve apenas 2
-        .toList();
+            .filter(e -> e.getCurso() == Curso.MEDICINA)
+            .map(e -> e.getIdade())
+            .sorted((i1,i2) -> i2- i1)
+            .distinct()//separa os difetentes
+            //se fosse idade maxima do curso, era so usar .max
+            .limit(2) //devolve apenas 2
+            .toList();
 
-    System.out.println("\nDuas maiores idades do curso de medicina: " +m);
+        System.out.println("\nDuas maiores idades do curso de medicina: " +m);
 
         // Quantidade de alunos do curso de direito
-         long quantAlunosDireito = estudantes.stream()
+         long quantAlunosDireito = estudantes.stream()//uso do long por segunranca
             .filter(d -> d.getCurso() == Curso.DIREITO)
             .count();
 
@@ -102,27 +100,30 @@ public class App {
         // Media de idade dos alunos do curso de computação
         double MediaComp = estudantes.stream()
             .filter(alunos -> alunos.getCurso() == Curso.COMPUTACAO)
-            .mapToDouble(alunos -> alunos.getIdade())
+            .mapToDouble(alunos -> alunos.getIdade())//map transforma um obj de entrada para um obj de tal tipo de saida - pode usar .mapToInt
             .average()
-            .getAsDouble();
+            .getAsDouble();//.orElse(0.0) usado apenas quando Optional
 
         System.out.println("\nMedia de idade dos alunos de Computacao: " +MediaComp);
 
         // Nome do primeiro aluno de computação com mais de 18 anos
-        Optional<String> Adezoito = estudantes.stream()
+        String Adezoito = estudantes.stream()
             .filter(dezoito -> dezoito.getCurso() == Curso.COMPUTACAO)
             .filter(dezoito -> dezoito.getIdade() > 18)
+            //.sorted((e1,e2) -> (e1.getNome()).compareTo(e2.getNome())) //para ordenar alfabeticamente
             .findFirst()
-            .map(dezoito -> dezoito.getNome());
+            .map(dezoito -> dezoito.getNome())
+            .orElse("Ninguem...");//findFirst pode nao encontrar ninguem
 
-        System.out.println("\nPrimeiro aluno de computacao com mais de 18 anos: " + Adezoito.orElse("Nenhum aluno encontrado..."));
+        System.out.println("\nPrimeiro aluno de computacao com mais de 18 anos: " + Adezoito);
 
         // Nome de um aluno de computação com mais de 18 anos
-        Optional<String> qualquerAluno = estudantes.stream()
+        String qualquerAluno = estudantes.stream()
             .filter(aluno -> aluno.getCurso() == Curso.COMPUTACAO)
             .filter(aluno -> aluno.getIdade() > 18)
             .map(aluno -> aluno.getNome())
-            .findAny();
+            .findAny()
+            .orElse("Ninguem");
 
         System.out.println("\nNome de qualquer aluno de computacao com mais de 18 anos: " +qualquerAluno);
            
@@ -143,14 +144,27 @@ public class App {
 
 
         // Mapa separando os estudantes por curso
-        Map <Curso, List<Estudante>> estudantesPorCurso = estudantes.stream()
-            .collect(Collectors.groupingBy(Estudante::getCurso)); //agrupa os estudantes por curso aqui
+        Map <Curso, List<Estudante>> cursos = estudantes.stream()
+            .collect(Collectors.groupingBy(e -> e.getCurso())); //agrupa os estudantes por curso aqui
 
-        estudantesPorCurso.forEach(curso, listaEstudantes) -> { //rever
-            System.out.println("Curso: " +curso);
-            listaEstudantes.forEach(estudantes -> System.out.println(" - " +estudante.getNome()));
-        }
+        System.out.println("\nMapa separando os estudantes por c'1urso: " +cursos);
+        System.out.println("\n" +cursos.get(Curso.COMPUTACAO));
+        System.out.println("\n" +cursos.get(Curso.DIREITO));
+        System.out.println("\n" +cursos.get(Curso.MEDICINA));
+
+    
 
         // Lista com os nomes de uma comissão composta pelos 2 estudantes mais moços de cada curso
+        List<String> maisJovens = cursos.values().stream()
+            //flatMap pega 3 listas e unifica
+            .flatMap(e -> e.stream()
+                .sorted(Comparator.comparingInt(Estudante::getIdade))
+                .limit(2)
+                .map(es -> es.getNome()+ "/"+ es.getCurso())
+            )
+            .sorted()
+            .toList();
+          System.out.println(maisJovens);
     }
 }
+
